@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    sessionStorage.setItem('loggedUser',"");
+    console.log(sessionStorage.getItem('loggedUser'));
   }
 
   handleLoginClick(){

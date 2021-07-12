@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FlightdetailsService } from 'src/app/services/flightdetails.service';
 
 @Component({
   selector: 'app-addairline',
@@ -9,7 +11,7 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 export class AddairlineComponent implements OnInit {
 
   eAddairlineForm:FormGroup = new FormGroup({});
-  constructor(private builder:FormBuilder) { }
+  constructor(private builder:FormBuilder,private flightservice : FlightdetailsService, private router:Router) { }
 
   ngOnInit(): void {
     this.eAddairlineForm = this.builder.group({
@@ -22,7 +24,11 @@ export class AddairlineComponent implements OnInit {
 
   AddAirline(){
     console.log("Venky");
-    console.log(this.eAddairlineForm);
+    this.flightservice.addairlinedetails(this.eAddairlineForm.value);
+    console.log(this.eAddairlineForm.value);
+    sessionStorage.setItem('loggedUser',"");
+    this.router.navigate(['manageairlines']);
+
   }
 
 }

@@ -1,2 +1,9 @@
+<div *ngIf="username==''; else navbar">
+
+</div>
+<ng-template #navbar>
+   <app-navbar></app-navbar> 
+</ng-template>
+
 <router-outlet></router-outlet> 
  

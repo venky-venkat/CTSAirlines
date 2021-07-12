@@ -1,5 +1,5 @@
 
-<app-navbar></app-navbar>
+
 <div class="container">
 <div class=" float-end">
     <button (click)="addairline()" class="btn btn-primary">Add Airlines </button>
@@ -11,7 +11,10 @@
         <th>Airlines</th>
         <th>Contact No</th>
         <th>Contact Address</th>
-        <th>Details</th>
+        <th>
+            Actions
+          </th>
+
         </tr>
     </thead>
     <tbody >
@@ -22,10 +25,23 @@
             <td>{{flight.Airlinename}}</td>
             <td>{{flight.Contactnumber}}</td>
             <td>{{flight.Contactaddress}}</td>
-            <td><a href="#" class="btn btn-primary btn-sm">ViewDetails</a></td>
+            <td>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                      Actions
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">Block</a>
+                      <a class="dropdown-item" href="#">Edit</a>
+                      <a class="dropdown-item" href="#">Delete</a>
+                    </div>
+                  </div>
+
+            </td>
         </tr>
     </tbody>
 </table>
 
  
 </div>
+ 

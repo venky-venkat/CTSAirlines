@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddairlineComponent } from './admin/addairline/addairline.component';
+import { AddflightComponent } from './admin/addflight/addflight.component';
 import { ManageairlinesComponent } from './admin/manageairlines/manageairlines.component';
+import { ManagescheduleComponent } from './admin/manageschedule/manageschedule.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BookflightComponent } from './user/bookflight/bookflight.component';
@@ -15,8 +17,16 @@ const routes: Routes = [
   component: AddairlineComponent
 },
 {
+  path:'addflight',
+  component: AddflightComponent
+},
+{
   path: 'manageairlines',
   component: ManageairlinesComponent
+},
+{
+  path: 'manageschedules',
+  component: ManagescheduleComponent
 },
 {
   path:'Navbar',

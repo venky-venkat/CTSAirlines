@@ -15,6 +15,8 @@ import { BookinghistoryComponent } from './user/bookinghistory/bookinghistory.co
 import { ManagebookingsComponent } from './user/managebookings/managebookings.component';
 import { SearchComponent } from './user/search/search.component';
 import { SearchresultComponent } from './user/searchresult/searchresult.component';
+import { ManagescheduleComponent } from './admin/manageschedule/manageschedule.component';
+import { AddflightComponent } from './admin/addflight/addflight.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { SearchresultComponent } from './user/searchresult/searchresult.componen
     BookinghistoryComponent,
     ManagebookingsComponent,
     SearchComponent,
-    SearchresultComponent
+    SearchresultComponent,
+    ManagescheduleComponent,
+    AddflightComponent
   ],
   imports: [
     BrowserModule,

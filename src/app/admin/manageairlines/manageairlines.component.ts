@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlightdetailsService } from 'src/app/services/flightdetails.service';
-import { FlightDTO } from 'src/app/services/FlightDTO';
+import { AirlineDTO } from 'src/app/services/AirlineDTO';
 import {Router} from "@angular/router"
 
 @Component({
@@ -10,14 +10,14 @@ import {Router} from "@angular/router"
 })
 export class ManageairlinesComponent implements OnInit {
 
-  public flightdata:FlightDTO[]=[];
+  public flightdata:AirlineDTO[]=[];
   constructor(service:FlightdetailsService, private router:Router) { 
-    this.flightdata = service.GetFlightDetails();
+    this.flightdata = service.GetairlineDetails();
     console.log(this.flightdata);
   }
 
   ngOnInit(): void {
-    console.log(this.flightdata);
+    console.log("manageairlines" +  sessionStorage.getItem('loggedUser'));
   }
 addairline(){
   this.router.navigate(['/admin/Addairline']);

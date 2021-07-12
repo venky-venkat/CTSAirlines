@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AirlineDTO } from './AirlineDTO';
 import { FlightDTO } from './FlightDTO';
 
 
@@ -7,12 +8,48 @@ import { FlightDTO } from './FlightDTO';
 })
 export class FlightdetailsService {
 
+  addairline: AirlineDTO[] = [];
+  addflight: FlightDTO[] = [];
   constructor() { }
 
-  GetFlightDetails(): FlightDTO[]{
-    return [
-      { Id:1, Airlinename : "Indigo", Avatarurl:"",Contactaddress:"NA",Contactnumber:1234 },
-      { Id:2, Airlinename : "SpiceJet", Avatarurl:"",Contactaddress:"NA",Contactnumber:123445 }
-    ]
+  GetairlineDetails(): AirlineDTO[] {
+    return this.addairline;
   }
+
+  addairlinedetails(obj: any): void {
+    this.addairline.push(
+      {
+        Id: 0,
+        Airlinename: obj.airline,
+        Avatarurl: obj.logoavatar,
+        Contactaddress: obj.contactaddress,
+        Contactnumber: obj.contactno
+      }
+    )
+  }
+
+  getflightDetails():FlightDTO[]{
+    return this.addflight;
+  }
+
+  addflightdetails(obj: any): void {
+    this.addflight.push(
+      {
+        Airline: obj.Airline,
+        Flightno: obj.Flightno,
+        From: obj.From,
+        To: obj.To,
+        Takeoff: obj.Takeoff,
+        Landing: obj.Landing,
+        Meals: obj.Meals,
+        Scheduleddays: obj.Scheduledays,
+        Noofbusinessseats: obj.Noofbusinessseats,
+        Noofnonbusinessseats: obj.Noofnonbusinessseats,
+        Noofrows: obj.Noofrows,
+        Totalprice: obj.Totalprice
+      }
+    )
+  }
+
+
 }

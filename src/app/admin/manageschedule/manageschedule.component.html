@@ -1,0 +1,60 @@
+
+
+<div class="container">
+    <div class=" float-end">
+        <button (click)="addflight()" class="btn btn-primary">Add New Flight </button>
+    </div>
+    <table class="table table-bordered  table-striped">
+        <thead>
+            <tr>
+            <th>Airline</th>
+            <th>Flight No</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Take Off</th>
+            <th>Landing</th>
+            <th>No Of Business Seats</th>
+            <th>No Of Non Business Seats</th>
+            <th>No of Rows</th>
+            <th>Schedules Days</th>
+            <th>Total Cost</th>
+            <th>Meals</th>
+            <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr *ngFor = "let flight of flights" >
+                <td>
+                    {{flight.Airline}}
+                </td>
+                <td>{{flight.Flightno}}</td>
+                <td>{{flight.From}}</td>
+                <td>{{flight.To}}</td>
+                <td>{{flight.Takeoff}}</td>
+                <td>{{flight.Landing}}</td>
+                <td>{{flight.Noofbusinessseats}}</td>
+                <td>{{flight.Noofnonbusinessseats}}</td>
+                <td>{{flight.Noofrows}}</td>
+                <td>{{flight.Scheduleddays}}</td>
+                <td>{{flight.Totalprice}}</td>
+                <td>{{flight.Meals}}</td>
+                <td>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                          Actions
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" href="#">Block</a>
+                          <a class="dropdown-item" href="#">Edit</a>
+                          <a class="dropdown-item" href="#">Delete</a>
+                        </div>
+                      </div>
+    
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+     
+    </div>
+     
