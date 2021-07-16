@@ -17,6 +17,13 @@ import { SearchComponent } from './user/search/search.component';
 import { SearchresultComponent } from './user/searchresult/searchresult.component';
 import { ManagescheduleComponent } from './admin/manageschedule/manageschedule.component';
 import { AddflightComponent } from './admin/addflight/addflight.component';
+import { ManagediscountComponent } from './admin/managediscount/managediscount.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+ 
 
 @NgModule({
   declarations: [
@@ -32,13 +39,19 @@ import { AddflightComponent } from './admin/addflight/addflight.component';
     SearchComponent,
     SearchresultComponent,
     ManagescheduleComponent,
-    AddflightComponent
+    AddflightComponent,
+    ManagediscountComponent 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

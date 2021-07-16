@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +10,11 @@ import {Router} from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   username : any;
-  constructor(private router:Router) { }
+  islogged:boolean=false;
+  constructor(private router:Router,private service:LoginService) { }
 
   ngOnInit(): void {
+    this.islogged = this.service.Isloggedin;
     this.username = sessionStorage.getItem('loggedUser');
   }
 
