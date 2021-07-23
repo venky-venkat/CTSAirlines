@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
     if(logindetails.username != "" ){
       sessionStorage.setItem('loggedUser',logindetails.username?logindetails.username:"");
+      sessionStorage.setItem('UserID', logindetails.id? logindetails.id.toString():"0");
       this.redirectuseronrole(logindetails.role);
     } else {
       alert('Login Falied, Please try again with valid credentials');

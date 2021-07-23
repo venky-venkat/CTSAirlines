@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FlightdetailsService } from 'src/app/services/flightdetails.service';
 
 @Component({
   selector: 'app-bookflight',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookflightComponent implements OnInit {
 
-  constructor() { }
+  searchdata:any=[];
+  eSearchForm:FormGroup = new FormGroup({});
+  constructor(private builder:FormBuilder,private service: FlightdetailsService) { }
 
   ngOnInit(): void {
+    this.eSearchForm = this.builder.group({
+      from: [],
+      to: []
+    });
+  }
+  get f(): { [key: string]: AbstractControl } {
+    return this.eSearchForm.controls;
+  }
+  SearchFlight(){
+    return this.service.searchflight(this.eSearchForm.value).subscribe(
+      (data: {}) => {
+        this.searchdata = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log('Search Flight Error : ', error);
+      }
+    );
   }
 
 }

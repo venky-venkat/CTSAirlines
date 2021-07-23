@@ -10,6 +10,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { BookflightComponent } from './user/bookflight/bookflight.component';
 import { BookinghistoryComponent } from './user/bookinghistory/bookinghistory.component';
 import { ManagebookingsComponent } from './user/managebookings/managebookings.component';
+import { NewbookingComponent } from './user/newbooking/newbooking.component';
 import { SearchComponent } from './user/search/search.component';
 
 const routes: Routes = [
@@ -53,6 +54,10 @@ component:BookinghistoryComponent
 {
   path:'managediscount',
   component:ManagediscountComponent
+},
+{
+  path:'book/:id',
+  component:NewbookingComponent
 },
 {
   path:'search',

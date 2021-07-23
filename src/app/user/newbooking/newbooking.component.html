@@ -1,0 +1,71 @@
+<app-navbar>
+</app-navbar>
+
+<div class="container">
+    <hr>
+    <h1 class="text-center">Ticket Booking</h1>
+    <hr>
+   
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-6">
+        <div class="card">
+            <div class="card-body">
+        
+            <form [formGroup]="ebookingForm" (submit)="Confirmbooking()">
+                <div class="col-md-12">
+                    <label for="txtflight" class="form-label">Flight Name</label>
+                    <input type="text" value="{{flightdetails.flightname}}" class="form-control" readonly="true"
+                        id="txtflight">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtpassengername" class="form-label">Passenger Name</label>
+                    <input type="text" class="form-control" id="txtpassengername" formControlName="Passenger"
+                        [ngClass]="{ 'is-invalid': submitted && f.Passenger.errors }">
+                </div>
+                <div *ngIf="submitted && f.Passenger.errors" class="invalid-feedback">
+                    <small *ngIf="f.Passenger.errors.required">Passenger name is required</small>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtemailid" class="form-label">Email ID</label>
+                    <input type="text" class="form-control" id="txtemailid" formControlName="email"
+                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                </div>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <small *ngIf="f.email.errors.required">Email ID is required</small>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtphone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="txtphone" formControlName="Phone"
+                        [ngClass]="{ 'is-invalid': submitted && f.Phone.errors }">
+                </div>
+                <div *ngIf="submitted && f.Phone.errors" class="invalid-feedback">
+                    <small *ngIf="f.Phone.errors.required">Phone number required</small>
+                </div>
+    
+                <div class="col-md-12">
+                    <button class="btn btn-success">Submit</button>
+                    <a routerLink="../bookflight" class="btn btn-primary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-4">
+    
+            <div class="card">
+                
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">From : {{flightdetails.from}}</li>
+                    <li class="list-group-item">To : {{flightdetails.to}}</li>
+                    <li class="list-group-item">TakeOff : {{flightdetails.takeoff}}</li>
+                    <li class="list-group-item">Landing : {{flightdetails.landing}}</li>
+                    <li class="list-group-item">Price : {{flightdetails.totalcost}} /--</li>
+                   
+                </ul>
+            </div>
+    
+        </div>
+    </div>
+
+
+</div>

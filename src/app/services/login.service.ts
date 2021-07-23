@@ -16,11 +16,13 @@ export class LoginService {
   registeredusers() {
     this.RegisteredUsers.push([
       {
+        id : 1,
         username: 'admin',
         password: '123',
         role: 'admin',
       },
       {
+        id: 2,
         username: 'user',
         password: '123',
         role: 'user',
@@ -38,12 +40,14 @@ export class LoginService {
     if (!user) {
       l.username = '';
       l.role = '';
+      l.id=0
       this.Isloggedin=false;
       this.router.navigate(['/']);
       return l;
     } else {
       l.username = user.username;
       l.role = user.role;
+      l.id = user.id;
       this.Isloggedin =true;
       this.router.navigate(['/Navbar']);
       return l;

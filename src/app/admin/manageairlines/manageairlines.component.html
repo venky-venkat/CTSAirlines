@@ -1,48 +1,44 @@
-
- <app-navbar>
+<app-navbar>
 </app-navbar>
-<div class="container">
-<div class=" float-end">
-    <button (click)="addairline()" class="btn btn-primary">Add Airlines </button>
-</div>
-<table class="table table-bordered  table-striped">
-    <thead>
-        <tr>
-        <th>Logo</th>
-        <th>Airlines</th>
-        <th>Contact No</th>
-        <th>Contact Address</th>
-        <th>
-            Actions
-          </th>
+<fieldset>
 
-        </tr>
-    </thead>
-    <tbody >
-        <tr *ngFor = "let flight of flightdata" >
-            <td>
-                {{flight.Id}}
-            </td>
-            <td>{{flight.Airlinename}}</td>
-            <td>{{flight.Contactnumber}}</td>
-            <td>{{flight.Contactaddress}}</td>
-            <td>
-                <div class="dropdown">
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                      Actions
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Block</a>
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Delete</a>
-                    </div>
-                  </div>
 
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <div class="container">
+        <hr>
+        <h1 class="text-center">Manage Airlines</h1>
+        <hr>
+        <div class=" float-end">
+            <button (click)="addairline()" class="btn btn-primary">Add Airlines </button>
+        </div>
+        <table class="table table-bordered  table-striped">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Airlines</th>
+                    <th>Contact No</th>
+                    <th>Contact Address</th>
+                    <th>
+                        Actions
+                    </th>
 
- 
-</div>
- 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flight of flightdata">
+                    <td>
+                        {{flight.id}}
+                    </td>
+                    <td>{{flight.airlineName}}</td>
+                    <td>{{flight.contactnumber}}</td>
+                    <td>{{flight.contactaddress}}</td>
+                    <td>
+                        <a href="" class="btn btn-warning">Update</a>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</fieldset>

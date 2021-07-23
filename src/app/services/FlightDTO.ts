@@ -1,6 +1,7 @@
 
 
 export class FlightDTO{
+    FlightID?:number=0;
     Airline:string="";
     Flightno:string="";
     From:string=""
@@ -10,11 +11,15 @@ export class FlightDTO{
     Noofbusinessseats?:number;
     Noofnonbusinessseats?:number;
     Noofrows?:number;
-    Scheduleddays:string=""
+    Scheduleddays:string="";
     Totalprice?:number;
-    Meals:string=""
+    Discountcode:string="";
+    Discountamount?:number;
+    Meals:string="";
+    Status:string="ON TIME";
 
     constructor(
+        flightID:number,
         airline:string,
         flightno:string,
         from:string,
@@ -26,9 +31,13 @@ export class FlightDTO{
         noofrows:number,
         scheduleddays:string,
         totalprice:number,
-        meals:string
+        discountcode:string,
+        discountamount:number,
+        meals:string,
+        status:string
     )
     {
+        this.FlightID=flightID,
 this.Airline = airline,
 this.Flightno=flightno,
 this.From=from,
@@ -40,6 +49,9 @@ this.Noofbusinessseats=noofbusinessseats,
 this.Noofrows=noofrows,
 this.Scheduleddays = scheduleddays,
 this.Totalprice = totalprice,
-this.Meals =meals
+this.Discountcode = discountcode,
+this.Discountamount = discountamount,
+this.Meals = meals,
+this.Status = status
     }
 }

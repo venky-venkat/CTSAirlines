@@ -10,22 +10,27 @@ import { FlightDTO } from 'src/app/services/FlightDTO';
 })
 export class AddflightComponent implements OnInit {
 
-  public flights= new FlightDTO("","","","","","",0,0,0,"",0,"");
+  public flights= new FlightDTO(0,"","","","","","",0,0,0,"",0,"",0,"","ON TIME");
   public airlines:any=[];
   constructor(private service: FlightdetailsService, private route:Router) { }
 
   ngOnInit(): void {
-    this.airlines  = this.service.GetairlineDetails();
-    console.log(this.airlines);
+     this.service.GetairlineDetails().subscribe(
+      (data: {}) => {
+        this.airlines = data;
+        console.log(data);
+      });
   }
 
   addnewflight(){
     console.log(this.flights);
-    this.service.addflightdetails(this.flights);
-this.route.navigate(['manageschedules']);
+    this.service.addflightdetails(this.flights)
+    .subscribe((data: {}) => {
+      console.log(data);
+    },
+    error => {
+      console.log("Flight Add ERROR : ", error);
+    });
+    //this.route.navigate(['manageschedules']);
   }
-
-
-
-
 }

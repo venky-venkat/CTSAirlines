@@ -1,12 +1,15 @@
 <app-navbar>
 </app-navbar>
 <div class="container">
+    <hr>
+    <h1 class="text-center">Add New Flight</h1>
+    <hr>
 <form #addflight="ngForm" (submit)="addnewflight()">
   
     <div class="col-md-4">
         <label for="ddlairline">Select Airline</label>
         <select class="form-control" name="Airline" [(ngModel)]="flights.Airline">
-            <option value={{airline.Airlinename}} *ngFor="let airline of airlines; index as i">{{airline.Airlinename}}</option>
+            <option value={{airline.id}} *ngFor="let airline of airlines; index as i">{{airline.airlineName}}</option>
         </select>
     </div>
     <div class="col-md-4">
@@ -52,6 +55,14 @@
     <div class="col-md-4">
         <label for="txttotalcost">Total Cost</label>
         <input type="text" class="form-control" name="Totalprice" [(ngModel)]="flights.Totalprice">
+    </div>
+    <div class="col-md-4">
+        <label for="txtdiscountcode">Discount Code</label>
+        <input type="text" class="form-control" name="Discountcode" [(ngModel)]="flights.Discountcode">
+    </div>
+    <div class="col-md-4">
+        <label for="txtdiscountamount">Discount Amount</label>
+        <input type="text" class="form-control" name="Discountamount" [(ngModel)]="flights.Discountamount">
     </div>
     <div class="col-md-4">
         <label for="ddlmeals"  >Meals</label>

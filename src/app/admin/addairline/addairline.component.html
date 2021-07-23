@@ -3,25 +3,39 @@
 </app-navbar>
 
 <div class="container">
-
+    <hr>
+    <h1 class="text-center">Add New Airlines</h1>
+    <hr>
 <fieldset>
     <form [formGroup]="eAddairlineForm" (submit)="AddAirline()">
     <div class="col-md-4">
         <label for="txtairline" class="form-label">Airline Name</label>
-        <input type="text" class="form-control" id="txtairline" formControlName="airline">
+        <input type="text" class="form-control" id="txtairline" formControlName="airline" 
+        [ngClass]="{ 'is-invalid': submitted && f.airline.errors }" >
     </div>
+    <div *ngIf="submitted && f.airline.errors" class="invalid-feedback">
+        <small *ngIf="f.airline.errors.required">Airline Name is required</small>
+      </div>
     <div class="col-md-4">
         <label for="formFileSm" class="form-label">Upload Logo</label>
         <input class="form-control form-control-sm" id="formFileSm" type="file" formControlName="logoavatar">
     </div>
     <div class="col-md-4">
         <label for="txtcontactno" class="form-label">Contact Number</label>
-        <input type="text" class="form-control" id="txtcontactno" formControlName="contactno">
+        <input type="text" class="form-control" id="txtcontactno" formControlName="contactno"
+        [ngClass]="{ 'is-invalid': submitted && f.contactno.errors }" >
     </div>
+    <div *ngIf="submitted && f.contactno.errors" class="invalid-feedback">
+        <small *ngIf="f.contactno.errors.required">Contact number is required</small>
+      </div>
     <div class="col-md-4">
         <label for="txtcontactaddress" class="form-label">Contact Address</label>
-        <input type="text" class="form-control" id="txtcontactaddress" formControlName="contactaddress">
+        <input type="text" class="form-control" id="txtcontactaddress" formControlName="contactaddress"
+        [ngClass]="{ 'is-invalid': submitted && f.contactaddress.errors }" >
     </div>
+    <div *ngIf="submitted && f.contactaddress.errors" class="invalid-feedback">
+        <small *ngIf="f.contactaddress.errors.required">Contact number is required</small>
+      </div>
     <div class="col-md-4">
         <button class="btn btn-success">Submit</button>
     
