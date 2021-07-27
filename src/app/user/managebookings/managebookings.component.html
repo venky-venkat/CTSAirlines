@@ -1,37 +1,100 @@
-
 <app-navbar>
 </app-navbar>
 <div class="container">
-<table class="table table-bordered">
+    <hr>
+    <h1 class="text-center">Manage Booking</h1>
+    <hr>
+ 
+<table class="table table-bordered table-striped">
 <thead>
     <tr>
+        <th>
+            S#
+        </th>
+        <th>
+            PNR
+        </th>
+        <th>
+            Flight Name
+        </th>
+        <th>
+            Passenger Name
+        </th>
+        <th>
+            From
+        </th>
+        <th>
+            To
+        </th>
+        <th>
+            TakeOff
+        </th>
+        <th>
+            Landing
+        </th>
+        <th>
+            Booked On
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Flight Status
+        </th>
         
         <th>
-            Logo
-        </th>
-        <th>
-            Date
-        </th>
-        <th>
-            Details
+            Cancel
         </th>
     </tr>
 </thead>
 <tbody>
-    <tr>
+    <tr *ngFor="let booking of bookingdetails; index as i">
+        <td>
+           {{i+1}}
+        </td>
+        <td>
+            {{booking.pnr}}
+        </td>
+        <td>
+           {{booking.flightName}}
+        </td>
+        <td>
+            {{booking.passengerName}}
+        </td>
+        <td>
+            {{booking.from}} 
+        </td>
+        <td>
+            {{booking.to}} 
+        </td>
+
+        <td>
+            {{booking.takeoffTime}} 
+        </td>
+
+        <td>
+            {{booking.landingtime}} 
+        </td>
+
+        <td>
+            {{booking.bookingtime}} 
+        </td>
+
+        <td>
+            {{booking.totalCost}} 
+        </td>
+        <td>
+            {{booking.flightStatus}}
+        </td>
+
+
         
         <td>
-            Indigo Logo
+            <a [routerLink]="['/cancelbooking/',booking.id]" class="btn btn-warning">Cancel</a>
         </td>
-        <td>
-            10/07/2021
-        </td>
-         
-        <td>
-            <button class="btn btn-primary">View</button>
-            <button class="btn btn-primary">Download</button>
-            <button class="btn btn-warning">Cancel</button>
-        </td>
+
+
+        
     </tr>
 </tbody>
 </table>

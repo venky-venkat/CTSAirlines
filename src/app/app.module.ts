@@ -24,7 +24,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
-import { NewbookingComponent } from './user/newbooking/newbooking.component'; 
+import { NewbookingComponent } from './user/newbooking/newbooking.component';
+import { CancelflightComponent } from './admin/cancelflight/cancelflight.component';
+import { PnrstatusComponent } from './user/pnrstatus/pnrstatus.component';
+import { CancelbookingComponent } from './user/cancelbooking/cancelbooking.component';
+import { BlockairlineComponent } from './admin/blockairline/blockairline.component'; 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +46,11 @@ import { NewbookingComponent } from './user/newbooking/newbooking.component';
     ManagescheduleComponent,
     AddflightComponent,
     ManagediscountComponent,
-    NewbookingComponent 
+    NewbookingComponent,
+    CancelflightComponent,
+    PnrstatusComponent,
+    CancelbookingComponent,
+    BlockairlineComponent 
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,10 @@ import { NewbookingComponent } from './user/newbooking/newbooking.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

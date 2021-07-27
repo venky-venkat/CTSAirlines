@@ -1,0 +1,51 @@
+<app-navbar>
+</app-navbar>
+
+<div class="container">
+    <hr>
+    <h1 class="text-center">Check PNR Status</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-lg-7 col-md-6 mb-6">
+            <div class="card">
+                <div class="card-body">
+                    <form [formGroup]="ePnrform" (submit)="pnrstatus()">
+                    <div class="col-md-8">
+                        <label for="lblmessage">Enter PNR : </label>
+                        <input type="text" class="form-control" id="txtpnrnumber" formControlName="Pnr"
+                        [ngClass]="{ 'is-invalid': f.Pnr.errors }">
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                <th>Passegner Name</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Taking Off</th>
+                <th>Landing</th>
+                <th>Flight Status</th>
+                <th>Booking Status</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{pnrdetails.passengerName}}</td>
+                    <td>{{pnrdetails.from}}</td>
+                    <td>{{pnrdetails.to}}</td>
+                    <td>{{pnrdetails.takeoffTime}}</td>
+                    <td>{{pnrdetails.landingtime}}</td>
+                    <td>{{pnrdetails.flightStatus}}</td>
+                    <td>{{pnrdetails.bookingStatus}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+            
+</div>

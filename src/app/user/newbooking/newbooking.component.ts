@@ -11,8 +11,10 @@ import { FlightdetailsService } from 'src/app/services/flightdetails.service';
 })
 export class NewbookingComponent implements OnInit {
   ebookingForm:FormGroup = new FormGroup({});
+  ediscountForm:FormGroup = new FormGroup({});
   flightdetails:any=[];
   submitted = false;
+  discountamount:number=0;
   id:number=0;
   constructor(private builder:FormBuilder,private route: ActivatedRoute,private flightservice : FlightdetailsService, private router:Router) { }
 
@@ -27,7 +29,12 @@ export class NewbookingComponent implements OnInit {
       flight: ['',[]],
       Passenger: ['',Validators.required],
       email: ['',Validators.required],
-      Phone: ['',Validators.required]
+      Phone: ['',Validators.required],
+      seatnumber: ['',Validators.required]
+    });
+
+    this.ediscountForm = this.builder.group({
+      coupencode: ['',[]]
     });
   }
   get f(): { [key: string]: AbstractControl } {
@@ -62,7 +69,7 @@ export class NewbookingComponent implements OnInit {
      Age: 35,
      EmailId: this.ebookingForm.value.email,
      Phone: this.ebookingForm.value.Phone,
-     SeatNumber: "3B",
+     SeatNumber: this.ebookingForm.value.seatnumber,
      From: this.flightdetails.from,
      To: this.flightdetails.to,
      TakeoffTime: this.flightdetails.takeoff,
@@ -70,7 +77,7 @@ export class NewbookingComponent implements OnInit {
      Bookingtime: '',
      TotalCost: this.flightdetails.totalcost,
      UserName: 'user',
-     PNR: Math.random() + 'VNK',
+     PNR: Math.floor(1000 + Math.random() * 9000)+"VK",
      Coupencode: this.flightdetails.discountCode,
      DiscountAmount: this.flightdetails.discountamount,
      FlightStatus: '',
@@ -87,6 +94,18 @@ export class NewbookingComponent implements OnInit {
     });
     console.log(this.ebookingForm.value);
     console.log("Booking Objec" + booking);
+  }
+
+  appldiscount(){
+    console.log(this.ediscountForm.value);
+    if (this.ediscountForm.value.coupencode == this.flightdetails.discountCode){
+      this.discountamount = this.flightdetails.discountamount;
+      this.flightdetails.totalcost = this.flightdetails.totalcost - this.flightdetails.discountamount;
+    }
+    else{
+      this.flightdetails.totalcost = this.flightdetails.totalcost +  this.discountamount;
+      this.discountamount = 0;
+    }
   }
 
 }

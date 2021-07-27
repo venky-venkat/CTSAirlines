@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
 
   public username:any;
   public password:any;
+  logindetails:any=[];
   @Output() myevent = new EventEmitter<string>();
   constructor(private router : Router, private loginservice: LoginService) { }
 
@@ -25,22 +26,34 @@ export class LoginComponent implements OnInit {
 
   handleLoginClick(){
     console.log(this.username + " " + this.password );
-    var logindetails = new Loginresult();
+   // var logindetails = new Loginresult();
     var Logindto = new LoginDTO();
     Logindto.username = this.username;
     Logindto.password = this.password;
-    logindetails = this.loginservice.Isvaliduser(Logindto);
 
-    if(logindetails.username != "" ){
-      sessionStorage.setItem('loggedUser',logindetails.username?logindetails.username:"");
-      sessionStorage.setItem('UserID', logindetails.id? logindetails.id.toString():"0");
-      this.redirectuseronrole(logindetails.role);
+   this.validateuser(Logindto);
+
+    if(this.logindetails.username != "" ){
+      sessionStorage.setItem('loggedUser',this.logindetails.username?this.logindetails.username:"");
+     // sessionStorage.setItem('UserID', this.logindetails.id? this.logindetails.id.toString():"0");
+      this.redirectuseronrole(this.logindetails.role);
     } else {
       alert('Login Falied, Please try again with valid credentials');
     }
    
   }
-
+  validateuser(Logindto:LoginDTO):any {
+    return this.loginservice.Isvaliduser(Logindto).subscribe(
+      (data: {}) => {
+        this.logindetails = data;
+        console.log(data);
+      },
+      (error) => {
+        alert('Login Falied, Please try again with valid credentials');
+        console.log('Login ERROR : ', error);
+      }
+    );
+  }
   redirectuseronrole(role:any){
     if(role=="admin"){
       sessionStorage.setItem('role',role);

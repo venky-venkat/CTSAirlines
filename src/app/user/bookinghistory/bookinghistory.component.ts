@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FlightdetailsService } from 'src/app/services/flightdetails.service';
 
 @Component({
   selector: 'app-bookinghistory',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookinghistoryComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:FlightdetailsService) { }
+  bookingdetails : any=[];
   ngOnInit(): void {
+this.loadbookinghistory();
+  }
+
+  loadbookinghistory(){
+    return (this.bookingdetails = this.service.bookinghistory().subscribe(
+      (data: {}) => {
+        this.bookingdetails = data;
+        console.log(data);
+      },
+      (error) => {
+        console.log('Booking History ERROR : ', error);
+      }
+    ));
   }
 
 }

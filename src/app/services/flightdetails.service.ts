@@ -43,12 +43,35 @@ export class FlightdetailsService {
   addbookingflight(obj:any){
     return this.http.post<any>(this.baseurl + '/booking/operations',obj,this.httpOptions)
   }
+
+  bookinghistory(){
+    return this.http.get<any>(this.baseurl + '/Bookinghistory/'+ sessionStorage.getItem('loggedUser'),this.httpOptions)
+  }
   getflightDetails(): Observable<FlightDTO> {
     return this.http.get<any>(this.baseurl + '/listallflights',this.httpOptions)
   }
 
   getflightDetailsbyID(id:number): Observable<FlightDTO> {
     return this.http.get<any>(this.baseurl + '/getflight/'+id,this.httpOptions)
+  }
+  cancelflight(id:number){
+    return this.http.put<any>(this.baseurl + '/cancelflight/'+id,null,this.httpOptions);
+  }
+
+  blockairlines(id:number){
+    return this.http.put<any>(this.baseurl + '/blockairline/'+id,null,this.httpOptions);
+  }
+
+  cancelbooking(id:number){
+    return this.http.delete<any>(this.baseurl + '/cancelbooking/'+id,this.httpOptions);
+  }
+
+  pnrstatus(pnr:string): Observable<any> {
+    return this.http.get<any>(this.baseurl + '/pnrstatus/'+pnr,this.httpOptions)
+  }
+
+  getbookingbyid(id:number): Observable<any> {
+    return this.http.get<any>(this.baseurl + '/getbookingbyid/'+id,this.httpOptions)
   }
 
   addflightdetails(obj: any){
@@ -73,7 +96,13 @@ export class FlightdetailsService {
    
 
   searchflight(obj:any):Observable<any> {
-    return this.http.get<any>(this.baseurl + '/searchflights/' + obj.from + '/' + obj.to,this.httpOptions)
+    if (obj.dtoneway == null){
+       return this.http.get<any>(this.baseurl + '/searchflights/' + obj.from + '/' + obj.to,this.httpOptions)
+    }
+   else{
+     var dt = obj.dtoneway.getFullYear() + '-' + ("0" + (obj.dtoneway.getMonth() + 1)).slice(-2) + '-' + obj.dtoneway.getDate();
+    return this.http.get<any>(this.baseurl + '/searchflightsbydate/' + obj.from + '/' + obj.to + '/' + dt,this.httpOptions)
+   }
   }
 
   errorHandl(error:any) {

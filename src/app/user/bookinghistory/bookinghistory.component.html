@@ -1,38 +1,99 @@
 <app-navbar>
 </app-navbar>
 <div class="container">
-<h4 align="center">Your Booking History</h4>
-<table class="table table-bordered">
+    <hr>
+    <h1 class="text-center">Booking History</h1>
+    <hr>
+ 
+<table class="table table-bordered table-striped">
 <thead>
     <tr>
         <th>
-            Date
+            S#
         </th>
         <th>
-            Logo
+            PNR
+        </th>
+        <th>
+            Flight Name
+        </th>
+        <th>
+            Passenger Name
+        </th>
+        <th>
+            From
+        </th>
+        <th>
+            To
+        </th>
+        <th>
+            TakeOff
+        </th>
+        <th>
+            Landing
+        </th>
+        <th>
+            Booked On
         </th>
         <th>
             Price
         </th>
         <th>
-            Details
+            Flight Status
+        </th>
+        <th>
+            Journey Status
         </th>
     </tr>
 </thead>
 <tbody>
-    <tr>
+    <tr *ngFor="let booking of bookingdetails; index as i">
         <td>
-            10/07/2021
+           {{i+1}}
         </td>
         <td>
-            Indigo Logo
+            {{booking.pnr}}
         </td>
         <td>
-            12000 
+           {{booking.flightName}}
         </td>
         <td>
-            <button class="btn btn-primary">ViewDetails</button>
+            {{booking.passengerName}}
         </td>
+        <td>
+            {{booking.from}} 
+        </td>
+        <td>
+            {{booking.to}} 
+        </td>
+
+        <td>
+            {{booking.takeoffTime}} 
+        </td>
+
+        <td>
+            {{booking.landingtime}} 
+        </td>
+
+        <td>
+            {{booking.bookingtime}} 
+        </td>
+
+        <td>
+            {{booking.totalCost}} 
+        </td>
+
+        <td>
+            {{booking.flightStatus}} 
+        </td>
+
+
+        <td>
+            {{booking.journeyStatus}} 
+        </td>
+
+
+        
     </tr>
 </tbody>
 </table>

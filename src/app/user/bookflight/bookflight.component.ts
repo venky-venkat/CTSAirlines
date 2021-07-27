@@ -16,17 +16,20 @@ export class BookflightComponent implements OnInit {
   ngOnInit(): void {
     this.eSearchForm = this.builder.group({
       from: [],
-      to: []
+      to: [],
+      dtoneway:[]
     });
   }
   get f(): { [key: string]: AbstractControl } {
     return this.eSearchForm.controls;
   }
   SearchFlight(){
+   
     return this.service.searchflight(this.eSearchForm.value).subscribe(
       (data: {}) => {
         this.searchdata = data;
         console.log(data);
+        console.log(this.eSearchForm.value);
       },
       (error) => {
         console.log('Search Flight Error : ', error);

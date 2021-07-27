@@ -19,6 +19,7 @@ export class AddflightComponent implements OnInit {
       (data: {}) => {
         this.airlines = data;
         console.log(data);
+        this.airlines = this.airlines.filter((item:any)=>item.status != "BLOCKED")
       });
   }
 

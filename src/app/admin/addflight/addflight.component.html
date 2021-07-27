@@ -5,78 +5,111 @@
     <h1 class="text-center">Add New Flight</h1>
     <hr>
 <form #addflight="ngForm" (submit)="addnewflight()">
-  
-    <div class="col-md-4">
-        <label for="ddlairline">Select Airline</label>
-        <select class="form-control" name="Airline" [(ngModel)]="flights.Airline">
-            <option value={{airline.id}} *ngFor="let airline of airlines; index as i">{{airline.airlineName}}</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="txtflight">Flight No</label>
-        <input type="text" class="form-control" name="Flightno" [(ngModel)]="flights.Flightno">
-    </div>
-    <div class="col-md-4">
-        <label for="txtfrom">From</label>
-        <input type="text" class="form-control" name="From" [(ngModel)]="flights.From">
-    </div>
-    <div class="col-md-4">
-        <label for="txtto">To</label>
-        <input type="text" class="form-control" name="To" [(ngModel)]="flights.To">
-    </div>
-    <div class="col-md-4">
-        <label for="txttakeoff">TakeOff</label>
-        <input type="text" class="form-control" name="Takeoff" [(ngModel)]="flights.Takeoff">
-    </div>
-    <div class="col-md-4">
-        <label for="txtlanding">Landing</label>
-        <input type="text" class="form-control" name="Landing" [(ngModel)]="flights.Landing">
-    </div>
-    <div class="col-md-4">
-        <label for="txtbusinessseats">No Business Seats</label>
-        <input type="text" class="form-control" name="Noofbusinessseats" [(ngModel)]="flights.Noofbusinessseats">
-    </div>
-    <div class="col-md-4">
-        <label for="txtnonbusinessseats">No of Non Business Seats</label>
-        <input type="text" class="form-control" name="Noofnonbusinessseats" [(ngModel)]="flights.Noofnonbusinessseats">
-    </div>
-    <div class="col-md-4">
-        <label for="txtnoofrows">No Of Rows</label>
-        <input type="text" class="form-control" name="Noofrows" [(ngModel)]="flights.Noofrows">
-    </div>
-    <div class="col-md-4">
-        <label for="ddlscheduledays" >Scheduling</label>
-        <select class="form-control" name="Scheduleddays" [(ngModel)]="flights.Scheduleddays">
-            <option value="Daily">Daily</option>
-            <option value="WeekEnds">WeekEnds</option>
-            <option value="WeekDays">WeekDays</option>
-        </select>
-    </div>
-    <div class="col-md-4">
-        <label for="txttotalcost">Total Cost</label>
-        <input type="text" class="form-control" name="Totalprice" [(ngModel)]="flights.Totalprice">
-    </div>
-    <div class="col-md-4">
-        <label for="txtdiscountcode">Discount Code</label>
-        <input type="text" class="form-control" name="Discountcode" [(ngModel)]="flights.Discountcode">
-    </div>
-    <div class="col-md-4">
-        <label for="txtdiscountamount">Discount Amount</label>
-        <input type="text" class="form-control" name="Discountamount" [(ngModel)]="flights.Discountamount">
-    </div>
-    <div class="col-md-4">
-        <label for="ddlmeals"  >Meals</label>
-        <select class="form-control" name="Meals" [(ngModel)]="flights.Meals">
-            <option value="None">None</option>
-            <option value="Veg">Veg</option>
-            <option value="Non Veg">Non Veg</option>
-            <option value="Both">Both</option>
-        </select>
+    <div class="row">
+    <div class="col-lg-4 col-md-6 mb-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <label for="ddlairline">Select Airline</label>
+                    <select class="form-control" name="Airline" [(ngModel)]="flights.Airline">
+                        <option value={{airline.id}} *ngFor="let airline of airlines; index as i">{{airline.airlineName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtflight">Flight No</label>
+                    <input type="text" class="form-control" name="Flightno" [(ngModel)]="flights.Flightno">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtfrom">From</label>
+                    <input type="text" class="form-control" name="From" [(ngModel)]="flights.From">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtto">To</label>
+                    <input type="text" class="form-control" name="To" [(ngModel)]="flights.To">
+                </div>
+                <div class="col-md-12">
+                    <label for="txttakeoff">TakeOff</label>
+                    <!-- <input type="text" class="form-control" name="Takeoff" [(ngModel)]="flights.Takeoff"> -->
+                    <input class="form-control" name="Takeoff" [(ngModel)]="flights.Takeoff" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="TakeOff at">
+                    <owl-date-time #dt1></owl-date-time>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtlanding">Landing</label>
+                    <!-- <input type="text" class="form-control" name="Landing" [(ngModel)]="flights.Landing"> -->
+                    <input class="form-control" name="Landing" [(ngModel)]="flights.Landing"  [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="Landing on">
+                    <owl-date-time #dt2></owl-date-time>
+                </div>
+                <div class="col-md-12">
+                    <label for="txtbusinessseats">No Business Seats</label>
+                    <input type="text" class="form-control" name="Noofbusinessseats" [(ngModel)]="flights.Noofbusinessseats">
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="col-md-4">
-        <input type="submit" class="btn btn-primary">
-        <a routerLink="../manageschedules" class="btn btn-primary">Back</a>
+    <div class="col-lg-4 col-md-6 mb-6">
+        <div class="card">
+            <div class="card-body">
+               
+                <div class="col-md-12">
+                    <label for="txtnonbusinessseats">No of Non Business Seats</label>
+                    <input type="text" class="form-control" name="Noofnonbusinessseats" [(ngModel)]="flights.Noofnonbusinessseats">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtnoofrows">No Of Rows</label>
+                    <input type="text" class="form-control" name="Noofrows" [(ngModel)]="flights.Noofrows">
+                </div>
+                <div class="col-md-12">
+                    <label for="ddlscheduledays" >Scheduling</label>
+                    <select class="form-control" name="Scheduleddays" [(ngModel)]="flights.Scheduleddays">
+                        <option value="Daily">Daily</option>
+                        <option value="WeekEnds">WeekEnds</option>
+                        <option value="WeekDays">WeekDays</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="txttotalcost">Total Cost</label>
+                    <input type="text" class="form-control" name="Totalprice" [(ngModel)]="flights.Totalprice">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtdiscountcode">Discount Code</label>
+                    <input type="text" class="form-control" name="Discountcode" [(ngModel)]="flights.Discountcode">
+                </div>
+                <div class="col-md-12">
+                    <label for="txtdiscountamount">Discount Amount</label>
+                    <input type="text" class="form-control" name="Discountamount" [(ngModel)]="flights.Discountamount">
+                </div>
+                <div class="col-md-12">
+                    <label for="ddlmeals"  >Meals</label>
+                    <select class="form-control" name="Meals" [(ngModel)]="flights.Meals">
+                        <option value="None">None</option>
+                        <option value="Veg">Veg</option>
+                        <option value="Non Veg">Non Veg</option>
+                        <option value="Both">Both</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary">
+            <a routerLink="../manageschedules" class="btn btn-primary">Back</a>
+        </div>
     </div>
+
+    <div class="col-lg-4 col-md-6 mb-6">
+        <div class="card">
+            
+                <div class="col-md-12">
+                    <img src="../../../assets/images/flight.jpg" class="img img-rounded">
+                </div>
+           
+        </div>
+    </div>
+
+    </div>
+    
+   
+
+    
 </form>
 </div>

@@ -17,6 +17,7 @@
                     <th>Airlines</th>
                     <th>Contact No</th>
                     <th>Contact Address</th>
+                    <th>Status</th>
                     <th>
                         Actions
                     </th>
@@ -26,15 +27,24 @@
             <tbody>
                 <tr *ngFor="let flight of flightdata">
                     <td>
-                        {{flight.id}}
+                      
+                        <img src="../../../assets/images/{{flight.id}}.png" class="img img-responsive" style="width:100px;" >
                     </td>
                     <td>{{flight.airlineName}}</td>
                     <td>{{flight.contactnumber}}</td>
                     <td>{{flight.contactaddress}}</td>
-                    <td>
-                        <a href="" class="btn btn-warning">Update</a>
-
+                    <td>{{flight.status}}</td>
+                    <td >
+                        <a *ngIf="flight.status != 'BLOCKED'; else unblocked" [routerLink]="['/blockairline/',flight.id]" class="btn btn-warning">
+                            Block
+                        </a>
+                        
                     </td>
+                    <ng-template #unblocked>
+                        <a [routerLink]="['/blockairline/',flight.id]" class="btn btn-warning">
+                           UnBlock
+                        </a>
+                    </ng-template>
                 </tr>
             </tbody>
         </table>

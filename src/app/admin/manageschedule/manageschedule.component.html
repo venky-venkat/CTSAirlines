@@ -24,6 +24,7 @@
             <th>Total Cost</th>
             <th>Meals</th>
             <th>Actions</th>
+            <th>Status</th>
             </tr>
         </thead>
         <tbody >
@@ -42,8 +43,9 @@
                 <td>{{flight.scheduling}}</td>
                 <td>{{flight.totalcost}}</td>
                 <td>{{flight.meals}}</td>
+                <td>{{flight.status}}</td>
                 <td>
-                    <a href="" class="btn btn-warning">Cancel</a>
+                    <a [routerLink]="['/cancelflight/',flight.id]" class="btn btn-warning">Cancel</a>
     
                 </td>
             </tr>
